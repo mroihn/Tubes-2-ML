@@ -2,19 +2,7 @@ import numpy as np
 
 
 class MaxPooling2DLayerFS:
-    """
-    Implementasi Max Pooling 2D from scratch.
-    """
-
     def __init__(self, pool_size: tuple, stride: tuple = None):
-        """
-        Konstruktor.
-
-        Args:
-            pool_size (tuple): Ukuran window pooling (pool_height, pool_width)
-            stride (tuple, optional): Stride pooling (stride_y, stride_x). 
-                                     Jika None, defaultnya sama dengan pool_size.
-        """
         self.pool_h, self.pool_w = pool_size
         if stride is None:
             self.stride_h, self.stride_w = self.pool_h, self.pool_w
@@ -26,15 +14,6 @@ class MaxPooling2DLayerFS:
         self.arg_max_indices = None  # Untuk backward pass nantinya
 
     def forward(self, input_data: np.ndarray) -> np.ndarray:
-        """
-        Melakukan operasi Max Pooling. 
-
-        Args:
-            input_data (np.ndarray): Input data (batch_size, height, width, channels).
-
-        Returns:
-            np.ndarray: Output setelah pooling. 
-        """
         if input_data.ndim == 3:  # (H, W, C)
             input_data = np.expand_dims(input_data, axis=0)
 
@@ -69,17 +48,8 @@ class MaxPooling2DLayerFS:
 
 
 class AveragePooling2DLayerFS:
-    """
-    Implementasi Average Pooling 2D from scratch.
-    """
 
     def __init__(self, pool_size: tuple, stride: tuple = None):
-        """
-        Args:
-            pool_size (tuple): Ukuran window pooling (pool_height, pool_width).
-            stride (tuple, optional): Stride pooling (stride_y, stride_x). 
-                                     Jika None, defaultnya sama dengan pool_size.
-        """
         self.pool_h, self.pool_w = pool_size
         if stride is None:
             self.stride_h, self.stride_w = self.pool_h, self.pool_w
@@ -90,15 +60,6 @@ class AveragePooling2DLayerFS:
         self.output_shape = None
 
     def forward(self, input_data: np.ndarray) -> np.ndarray:
-        """
-        Melakukan operasi Average Pooling.
-
-        Args:
-            input_data (np.ndarray): Input data (batch_size, height, width, channels).
-
-        Returns:
-            np.ndarray: Output setelah pooling.
-        """
         if input_data.ndim == 3:  # (H, W, C)
             input_data = np.expand_dims(input_data, axis=0)
 

@@ -2,25 +2,11 @@ import numpy as np
 
 
 class FlattenLayerFS:
-    """
-    Implementasi layer Flatten from scratch.
-    """
-
     def __init__(self):
         """Konstruktor."""
         self.input_shape = None
 
     def forward(self, input_data: np.ndarray) -> np.ndarray:
-        """
-        Mengubah input multidimensi menjadi vektor 1D per instance dalam batch
-        Shape input (batch_size, H, W, C) menjadi (batch_size, H*W*C). 
-
-        Args:
-            input_data (np.ndarray): Input data (misalnya, output dari Conv/Pool layer).
-
-        Returns:
-            np.ndarray: Data yang sudah di-flatten. 
-        """
         self.input_shape = input_data.shape
         if input_data.ndim == 1:  # Sudah flatten
             return input_data

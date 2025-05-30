@@ -2,20 +2,8 @@ import numpy as np
 
 
 class Conv2DLayerFS:
-    """
-    Implementasi layer konvolusi 2D from scratch. 
-    """
 
     def __init__(self, num_filters: int, kernel_size: tuple, stride: tuple = (1, 1), padding: str = 'valid'):
-        """
-        Konstruktor.
-
-        Args:
-            num_filters (int): Jumlah filter. 
-            kernel_size (tuple): Dimensi filter (height, width). 
-            stride (tuple): Stride konvolusi (stride_y, stride_x). 
-            padding (str): Jenis padding ('valid' atau 'same'). 
-        """
         self.num_filters = num_filters
         self.kernel_size = kernel_size
         self.stride_h, self.stride_w = stride
@@ -29,13 +17,6 @@ class Conv2DLayerFS:
         self.padded_input = None  # Untuk debugging atau backward pass nantinya
 
     def load_weights(self, weights: np.ndarray, biases: np.ndarray) -> None:
-        """
-        Memuat bobot dan bias.
-
-        Args:
-            weights (np.ndarray): Bobot filter (kernel_h, kernel_w, input_channels, num_filters).
-            biases (np.ndarray): Bias untuk setiap filter (num_filters,).
-        """
         self.weights = weights  #
         self.biases = biases  #
         if self.weights is not None:
@@ -44,18 +25,6 @@ class Conv2DLayerFS:
                     f"[Conv2DLayerFS] Info: Input channels inferred from weights: {self.weights.shape[2]}")
 
     def forward(self, input_data: np.ndarray) -> np.ndarray:
-        """
-        Melakukan operasi konvolusi 2D
-        input_data bisa berbentuk (batch_size, height, width, channels) 
-        atau (height, width, channels).
-        Jika padding='same', perlu implementasi padding manual.
-
-        Args:
-            input_data (np.ndarray): Input data.
-
-        Returns:
-            np.ndarray: Output feature map.
-        """
         if input_data.ndim == 3:  # (H, W, C)
             input_data = np.expand_dims(input_data, axis=0)
 
