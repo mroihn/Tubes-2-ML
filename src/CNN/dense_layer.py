@@ -21,17 +21,14 @@ class DenseLayerFS:
         self.activation_fn = None
 
         if self.activation_name == 'relu':
-            self.activation_fn = ReLULayerFS().forward  # Contoh jika ReLULayerFS
+            self.activation_fn = ReLULayerFS().forward 
         elif self.activation_name == 'softmax':
-            self.activation_fn = self._softmax  # Fungsi softmax internal
-        # Tambahkan aktivasi lain jika perlu
+            self.activation_fn = self._softmax  
 
-        # (input_features, num_units)
         self.weights: np.ndarray = None
         self.biases: np.ndarray = None   # (num_units,)
         self.input_shape = None
         self.output_shape = None
-        # Simpan output sebelum aktivasi (untuk softmax atau backward pass)
         self.z = None
 
     def load_weights(self, weights: np.ndarray, biases: np.ndarray) -> None:

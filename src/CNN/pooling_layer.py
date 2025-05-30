@@ -45,7 +45,7 @@ class MaxPooling2DLayerFS:
         out_w = (prev_w - self.pool_w) // self.stride_w + 1
 
         output_data = np.zeros((batch_size, out_h, out_w, num_channels))
-        # self.arg_max_indices = np.zeros_like(output_data, dtype=object) # Jika ingin menyimpan indeks
+        # self.arg_max_indices = np.zeros_like(output_data, dtype=object)
 
         for b_idx in range(batch_size):
             for ch_idx in range(num_channels):
@@ -60,9 +60,6 @@ class MaxPooling2DLayerFS:
                                                  r_start:r_end, c_start:c_end, ch_idx]
                         output_data[b_idx, r_idx, c_idx,
                                     ch_idx] = np.max(input_slice)
-                        # Untuk menyimpan indeks max (opsional, lebih kompleks jika ada duplikat max)
-                        # max_val_idx_local = np.unravel_index(np.argmax(input_slice), input_slice.shape)
-                        # self.arg_max_indices[b_idx, r_idx, c_idx, ch_idx] = (max_val_idx_local[0] + r_start, max_val_idx_local[1] + c_start)
 
         self.output_shape = output_data.shape
         return output_data[0] if input_data.ndim == 3 and batch_size == 1 else output_data
