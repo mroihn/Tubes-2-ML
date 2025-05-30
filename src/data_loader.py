@@ -52,9 +52,6 @@ class DataLoaderCIFAR10:
         Spesifikasi: 40k train data, 10k validation data, dan 10k test data.
         Rasio pembagian training asli menjadi training baru dan validasi adalah 4:1.
         """
-        # CIFAR-10 training set asli memiliki 50.000 gambar.
-        # Kita butuh 10.000 untuk validasi (20% dari 50.000 atau 1/5).
-        # Sisanya 40.000 untuk training baru.
         self.train_images, self.validation_images, \
             self.train_labels, self.validation_labels = train_test_split(
                 self.original_train_images,
@@ -108,7 +105,6 @@ class DataLoaderCIFAR10:
             return self.test_images.shape[1:]
         else:
             # Default CIFAR-10 shape jika data belum dimuat sepenuhnya
-            # (sebaiknya tidak terjadi jika konstruktor berjalan lancar)
             return (32, 32, 3)
 
 
