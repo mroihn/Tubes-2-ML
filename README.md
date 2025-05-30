@@ -81,7 +81,7 @@ Repositori ini berisi:
 
 ## Cara Setup & Menjalankan Program
 
-1. **Buka file notebook (ipynb) di Google Colab**
+1. **Buka file notebook (ipynb) di Google Colab (src/rnn/rnn.ipynb, src/LSTM/main.ipynb, src/notebooks/main_cnn_2.ipynb)**
 2. **Jalankan seluruh cell secara berurutan**
    - Semua dependensi akan otomatis terinstall jika belum tersedia.
    - Ikuti instruksi pada notebook untuk melakukan training, evaluasi, hingga pengujian forward propagation custom.
